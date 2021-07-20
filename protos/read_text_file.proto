@@ -1,0 +1,21 @@
+// This specifies we want to use the newest version of the protobuf syntax, proto3.
+syntax = "proto3";
+
+package protos;
+
+// This imports the wrapper class for the native types. These are objects which contain the
+// native type in question in a field called "value".
+import "google/protobuf/wrappers.proto";
+
+// This is my service. A class that contain multiple rpc functions.
+service FileReader {
+  // This RPC will appear as a function on my server.
+  rpc read_secret_file (read_secret_request) returns (google.protobuf.StringValue) {}
+}
+
+// The request body for the hello service, including the user's name
+message read_secret_request {
+  string name = 1;
+  int32 pin = 2; 
+}
+
